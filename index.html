@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pontis Private Label — Preview with Image Placeholders</title>
+
+<style>
+.img-placeholder {
+  width: 100%;
+  background: #f0f0f0;
+  border: 2px dashed #252A34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #252A34;
+  font-family: 'Jost', sans-serif;
+  text-align: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+.pl-product__card .img-placeholder {
+  height: 200px;
+  min-height: unset !important;
+  overflow: hidden;
+}
+.img-placeholder .ph-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #252A34;
+  margin-bottom: 8px;
+}
+.img-placeholder .ph-desc {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+  max-width: 360px;
+}
+.img-placeholder .ph-size {
+  font-size: 11px;
+  color: #999;
+  margin-top: 8px;
+  letter-spacing: 0.05em;
+}
+.ph-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+  opacity: 0.4;
+}
+</style>
+
+</head>
+<body style="margin:0;padding:0;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ─── RESET & BASE ─── */
+  .pl-page * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .pl-page {
+    background: #FFFFFF;
+    color: #252A34;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .pl-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .pl-gold { color: #252A34; }
+
+  .pl-rule {
+    width: 100%;
+    height: 1px;
+    background: #CCCCCC;
+    opacity: 1;
+    border: none;
+  }
+
+  .pl-display {
+    font-family: 'Jost', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  /* ─── STICKY NAV ─── */
+  .pl-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid #DDDDDD;
+    padding: 0 32px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: border-color 0.3s;
+  }
+
+  .pl-nav__logo {
+    height: 28px;
+    width: auto;
+    filter: invert(1);
+    opacity: 0.9;
+    display: block;
+  }
+
+  .pl-nav__ctas {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .pl-nav .pl-btn {
+    padding: 10px 24px;
+    font-size: 12px;
+  }
+
+  /* Push hero down so it clears the fixed nav */
+  .pl-hero {
+    padding-top: 160px;
+  }
+
+  @media (max-width: 768px) {
+    .pl-nav {
+      padding: 0 20px;
+    }
+    .pl-nav .pl-btn--outline {
+      display: none;
+    }
+    .pl-hero {
+      padding-top: 120px;
+    }
+  }
+
+  .pl-hero {
+    padding-bottom: 100px;
+    text-align: center;
+  }
+
+  .pl-hero__logo {
+    display: block;
+    margin: 0 auto 40px;
+    height: 56px;
+    width: auto;
+    filter: none;
+    opacity: 1;
+  }
+
+  .pl-footer__logo {
+    height: 28px;
+    width: auto;
+    filter: none;
+    opacity: 0.5;
+  }
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #252A34;
+    margin-bottom: 28px;
+  }
+
+  .pl-hero__headline {
+    font-size: clamp(52px, 8vw, 96px);
+    max-width: 900px;
+    margin: 0 auto 28px;
+  }
+
+  .pl-hero__sub {
+    font-size: 18px;
+    font-weight: 300;
+    color: #252A34;
+    max-width: 560px;
+    margin: 0 auto 48px;
+    line-height: 1.7;
+  }
+
+  .pl-hero__ctas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ─── BUTTONS ─── */
+  .pl-btn {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 36px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+  }
+
+  .pl-btn--primary {
+    background: #252A34;
+    color: #FFFFFF;
+  }
+
+  .pl-btn--primary:hover {
+    background: #3a3f4d;
+    color: #FFFFFF;
+  }
+
+  .pl-btn--outline {
+    background: transparent;
+    color: #252A34;
+    border: 1.5px solid #252A34;
+  }
+
+  .pl-btn--outline:hover {
+    border-color: #252A34;
+    color: #252A34;
+  }
+
+  /* ─── TICKER ─── */
+  .pl-ticker {
+    overflow: hidden;
+    background: #0A0A0A;
+    border-top: 1px solid #E8E4DC;
+    border-bottom: 1px solid #DDDDDD;
+    padding: 18px 0;
+    white-space: nowrap;
+  }
+
+  .pl-ticker__track {
+    display: inline-flex;
+    animation: ticker 28s linear infinite;
+  }
+
+  .pl-ticker__item {
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #252A34;
+    padding: 0 32px;
+  }
+
+  .pl-ticker__dot {
+    color: #CCCCCC;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ─── SOCIAL PROOF ─── */
+  .pl-proof {
+    padding: 72px 0;
+    text-align: center;
+  }
+
+  .pl-proof__label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #888888;
+    margin-bottom: 40px;
+  }
+
+  .pl-proof__logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px 56px;
+  }
+
+  .pl-proof__logo {
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #CCCCCC;
+    transition: color 0.2s;
+    text-decoration: none;
+  }
+
+  .pl-proof__logo:hover {
+    color: #252A34;
+  }
+
+  /* ─── SECTION SHARED ─── */
+  .pl-section {
+    padding: 100px 0;
+  }
+
+  .pl-section--dark {
+    background: #FFFFFF;
+  }
+
+  .pl-section--surface {
+    background: #EAEAEA;
+  }
+
+  .pl-section__eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #252A34;
+    margin-bottom: 20px;
+  }
+
+  .pl-section__headline {
+    font-size: clamp(36px, 5vw, 64px);
+    margin-bottom: 32px;
+  }
+
+  .pl-section__body {
+    font-size: 17px;
+    font-weight: 300;
+    color: #252A34;
+    line-height: 1.8;
+    max-width: 680px;
+  }
+
+  /* ─── PROBLEM SECTION ─── */
+  .pl-problem {
+    padding: 100px 0;
+    background: #EAEAEA;
+  }
+
+  /* ─── DIFFERENTIATORS ─── */
+  .pl-diff {
+    padding: 100px 0;
+  }
+
+  .pl-diff__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 64px;
+  }
+
+  .pl-diff__item {
+    background: #EAEAEA;
+    padding: 48px 40px;
+    transition: background 0.2s;
+  }
+
+  .pl-diff__item:hover {
+    background: #D0D0D0;
+  }
+
+  .pl-diff__title {
+    font-family: 'Jost', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #252A34;
+    margin-bottom: 14px;
+  }
+
+  .pl-diff__body {
+    font-size: 15px;
+    font-weight: 300;
+    color: #252A34;
+    line-height: 1.75;
+  }
+
+  /* ─── PRODUCTS ─── */
+  .pl-products {
+    padding: 100px 0;
+    background: #EAEAEA;
+  }
+
+  .pl-products__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 64px;
+  }
+
+  .pl-product__card {
+    background: #FFFFFF;
+    padding: 40px 32px;
+    border-top: 2px solid #DDDDDD;
+    transition: border-color 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pl-product__card:hover {
+    border-color: #252A34;
+  }
+
+  .pl-product__name {
+    font-family: 'Jost', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #252A34;
+    margin-bottom: 12px;
+  }
+
+  .pl-product__desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: #888888;
+    line-height: 1.7;
+  }
+
+  /* ─── PROCESS ─── */
+  .pl-process {
+    padding: 100px 0;
+  }
+
+  .pl-process__steps {
+    margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .pl-process__step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    align-items: start;
+    background: #EAEAEA;
+    padding: 36px 40px;
+    gap: 24px;
+    transition: background 0.2s;
+  }
+
+  .pl-process__step:hover {
+    background: #D0D0D0;
+  }
+
+  .pl-process__num {
+    font-family: 'Jost', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #252A34;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    padding-top: 4px;
+  }
+
+  .pl-process__title {
+    font-family: 'Jost', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #252A34;
+    margin-bottom: 8px;
+  }
+
+  .pl-process__meta {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #252A34;
+    margin-bottom: 10px;
+  }
+
+  .pl-process__body {
+    font-size: 15px;
+    font-weight: 300;
+    color: #252A34;
+    line-height: 1.7;
+  }
+
+  /* ─── MATH / STATS ─── */
+  .pl-math {
+    padding: 100px 0;
+    background: #EAEAEA;
+  }
+
+  .pl-math__body {
+    font-size: 17px;
+    font-weight: 300;
+    color: #252A34;
+    line-height: 1.8;
+    max-width: 680px;
+    margin-bottom: 72px;
+  }
+
+  .pl-math__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .pl-stat {
+    background: #FFFFFF;
+    padding: 48px 40px;
+    text-align: left;
+    border: 1px solid #DDDDDD;
+  }
+
+  .pl-stat__num {
+    font-family: 'Jost', sans-serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #252A34;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .pl-stat__label {
+    font-size: 13px;
+    font-weight: 400;
+    color: #888888;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  /* ─── CTA / FORM ─── */
+  .pl-cta {
+    padding: 100px 0;
+  }
+
+  .pl-cta__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: stretch;
+  }
+
+  .pl-cta__left {}
+
+  .pl-cta__option {
+    margin-bottom: 8px;
+  }
+
+  .pl-cta__option-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #252A34;
+    margin-bottom: 10px;
+  }
+
+  .pl-cta__option-desc {
+    font-size: 15px;
+    font-weight: 300;
+    color: #252A34;
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+
+  .pl-cta__divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 32px 0;
+    color: #CCCCCC;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .pl-cta__divider::before,
+  .pl-cta__divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #DDDDDD;
+  }
+
+  .pl-cta__sub {
+    font-size: 16px;
+    font-weight: 300;
+    color: #252A34;
+    line-height: 1.8;
+    margin-top: 24px;
+    margin-bottom: 40px;
+  }
+
+  .pl-cta__secondary {
+    font-size: 13px;
+    color: #888888;
+    margin-top: 24px;
+  }
+
+  .pl-cta__secondary a {
+    color: #252A34;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .pl-cta__secondary a:hover {
+    text-decoration: underline;
+  }
+
+  .pl-cta__form {
+    background: #EAEAEA;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pl-cta__form iframe {
+    flex: 1;
+    min-height: 520px;
+  }
+
+  /* ─── FOOTER ─── */
+  .pl-footer {
+    padding: 48px 0;
+    border-top: 1px solid #E8E4DC;
+  }
+
+  .pl-footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .pl-footer__brand {
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #252A34;
+  }
+
+  .pl-footer__copy {
+    font-size: 12px;
+    color: #888888;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  /* ─── TESTIMONIALS ─── */
+  .pl-testimonials {
+    padding: 100px 0;
+    background: #FFFFFF;
+  }
+
+  .pl-testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 64px;
+  }
+
+  .pl-testimonial {
+    background: #EAEAEA;
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    transition: background 0.2s;
+  }
+
+  .pl-testimonial:hover {
+    background: #e0e0e0;
+  }
+
+  .pl-testimonial__image-wrap {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #D4D4D4;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .pl-testimonial__image-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    color: #999999;
+  }
+
+  .pl-testimonial__image-placeholder svg {
+    opacity: 0.35;
+  }
+
+  .pl-testimonial__image-placeholder span {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .pl-testimonial__image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .pl-testimonial__quote-mark {
+    font-family: 'Jost', sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: #CCCCCC;
+    line-height: 0.6;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .pl-testimonial__body {
+    font-size: 15px;
+    font-weight: 300;
+    color: #252A34;
+    line-height: 1.8;
+  }
+
+  .pl-testimonial__footer {
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid #CCCCCC;
+  }
+
+  .pl-testimonial__name {
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #252A34;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+
+  .pl-testimonial__role {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #888888;
+  }
+
+  @media (max-width: 768px) {
+    .pl-inner { padding: 0 20px; }
+    .pl-hero { padding: 80px 0 72px; }
+    .pl-diff__grid { grid-template-columns: 1fr; }
+    .pl-products__grid { grid-template-columns: repeat(2, 1fr); }
+    .pl-math__stats { grid-template-columns: 1fr; }
+    .pl-cta__layout { grid-template-columns: 1fr; gap: 48px; }
+    .pl-process__step { grid-template-columns: 56px 1fr; padding: 28px 24px; }
+    .pl-cta__form { padding: 32px 24px; }
+    .pl-testimonials__grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .pl-products__grid { grid-template-columns: 1fr; }
+    .pl-hero__ctas { flex-direction: column; align-items: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pl-ticker__track { animation: none; }
+  }
+</style>
+
+<div class="pl-page">
+
+  <!-- ─── STICKY NAV ─── -->
+  <nav class="pl-nav">
+    <img
+      src="/mnt/user-data/uploads/pontis_logo_png-07__2_.png"
+      alt="Pontis"
+      class="pl-nav__logo" style="filter:none;opacity:1;"
+    >
+    <div class="pl-nav__ctas">
+      <a href="#start-your-program" class="pl-btn pl-btn--primary" onclick="document.getElementById('start-your-program').scrollIntoView({behavior:'smooth'});return false;">Start Your Program</a>
+      <a href="https://calendar.app.google/dMXUUszpWEtnZCgT8" target="_blank" rel="noopener" class="pl-btn pl-btn--outline">Schedule a Call</a>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  IMAGE OPPORTUNITY #1 — HERO BACKGROUND                     ║
+  ║  Best: Full-width action shot, dark/dramatic lighting        ║
+  ║  (athlete on mat, kimono detail, training in gym)            ║
+  ║  Size: 1920×1080px minimum, landscape                        ║
+  ║  To add: Set as CSS background-image on .pl-hero             ║
+  ║  Add overlay: background: rgba(255,255,255,0.85) on top      ║
+  ║  so text stays readable on light theme                       ║
+  ╚══════════════════════════════════════════════════════════════╝
+  -->
+  <section class="pl-hero">
+    
+<div class="img-placeholder" style="min-height:120px;">
+  <div class="ph-icon">🖼</div>
+  <p class="ph-label">Image #1 — Hero Background</p>
+  <p class="ph-desc">Full-width action shot — athlete on mat, kimono detail, or training in gym. Set as CSS background-image on hero section with light overlay.</p>
+  <p class="ph-size">Recommended: 1920×1080px landscape</p>
+</div>
+    <div class="pl-inner">
+      <img
+        src="/mnt/user-data/uploads/pontis_logo_png-07__2_.png"
+        alt="Pontis"
+        class="pl-hero__logo"
+      >
+      <p class="pl-hero__eyebrow">Bridging Passion with Performance</p>
+      <h1 class="pl-hero__headline pl-display">
+        We Are Not A Print Shop.<br>
+        We Are A Build Partner.
+      </h1>
+      <p class="pl-hero__sub">
+        Premium private label gear for BJJ academies. Train hard. Look good. Built to perform on and off the mats.
+      </p>
+      <div class="pl-hero__ctas">
+        <a href="#start-your-program" class="pl-btn pl-btn--primary">Start Your Program</a>
+        <a href="https://calendar.app.google/dMXUUszpWEtnZCgT8" target="_blank" rel="noopener" class="pl-btn pl-btn--outline">Schedule a Call</a>
+      </div>
+      <script>
+        document.querySelector('.pl-hero__ctas .pl-btn--primary').addEventListener('click', function(e) {
+          e.preventDefault();
+          document.getElementById('start-your-program').scrollIntoView({ behavior: 'smooth' });
+        });
+      </script>
+    </div>
+  </section>
+
+  <!-- ─── TICKER ─── -->
+  <div class="pl-ticker" aria-hidden="true">
+    <div class="pl-ticker__track">
+      
+      
+        <span class="pl-ticker__item">{{ item }}</span>
+        <span class="pl-ticker__item pl-ticker__dot">·</span>
+      
+    </div>
+  </div>
+
+  <!-- ─── SOCIAL PROOF ─── -->
+  <section class="pl-proof">
+    <div class="pl-inner">
+      <p class="pl-proof__label">Trusted by academies that take their brand seriously</p>
+      <div class="pl-proof__logos">
+        <span class="pl-proof__logo">Marcelo Garcia Jiu-Jitsu</span>
+        <span class="pl-proof__logo">Technics Jiu-Jitsu</span>
+        <span class="pl-proof__logo">Rocky Mountain Women's Grappling</span>
+        <span class="pl-proof__logo">Zumi Judo + Jiu-Jitsu</span>
+        <span class="pl-proof__logo">Workshop Honolulu</span>
+        <span class="pl-proof__logo">Elevate Jiu-Jitsu</span>
+        <span class="pl-proof__logo">VSSL Union</span>
+        <span class="pl-proof__logo">JR Academy</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="pl-rule">
+
+  <!-- ─── PROBLEM ─── -->
+  <!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  IMAGE OPPORTUNITY #2 — PROBLEM SECTION SPLIT LAYOUT        ║
+  ║  Best: Athletes wearing branded academy gear, mat-level      ║
+  ║  shot, or team photo showing branded kimonos                 ║
+  ║  Size: 600×700px, portrait preferred                         ║
+  ║  To add: Convert .pl-problem .pl-inner to a 2-col grid      ║
+  ║  Text left, image right — ask Claude to code the layout      ║
+  ╚══════════════════════════════════════════════════════════════╝
+  -->
+  <section class="pl-problem">
+    <div class="pl-inner">
+    
+<div class="img-placeholder" style="min-height:300px;">
+  <div class="ph-icon">🖼</div>
+  <p class="ph-label">Image #2 — Problem Section — Split Layout</p>
+  <p class="ph-desc">Portrait shot of athletes in branded academy gear. Converts section to 2-column: text left, image right.</p>
+  <p class="ph-size">Recommended: 600×700px portrait</p>
+</div>
+      <p class="pl-section__eyebrow">The Opportunity</p>
+      <h2 class="pl-section__headline pl-display">
+        Gear Is Not An Expense.<br>It Is A Revenue Stream.
+      </h2>
+      <p class="pl-section__body">
+        Most academy owners treat gear as a cost. The ones building real businesses treat it as a program. Your students need Kimonos on day one. Your competition team needs them for every tournament. Your members are walking billboards every time they step on the mat. That demand already exists inside your four walls. You are either capturing it or leaving it on the table. Pontis exists to connect your vision with its execution.
+      </p>
+    </div>
+  </section>
+
+  <hr class="pl-rule">
+
+  <!-- ─── DIFFERENTIATORS ─── -->
+  <section class="pl-diff pl-section--dark">
+    <div class="pl-inner">
+      <p class="pl-section__eyebrow">The Pontis Difference</p>
+      <h2 class="pl-section__headline pl-display">What Separates Us From The Rest.</h2>
+      <div class="pl-diff__grid">
+        <div class="pl-diff__item">
+          <p class="pl-diff__title">Factory-Direct. No Middlemen.</p>
+          <p class="pl-diff__body">Hand-crafted by people with years of expertise. We work directly with the people who make your gear, so the quality shows and the margins are real.</p>
+        </div>
+        <div class="pl-diff__item">
+          <p class="pl-diff__title">A Partner, Not A Vendor.</p>
+          <p class="pl-diff__body">We work alongside you through design, production, delivery, and reorder cycles. When issues arise, we handle them. That is the difference between a partner and a supplier.</p>
+        </div>
+        <div class="pl-diff__item">
+          <p class="pl-diff__title">We Train Too.</p>
+          <p class="pl-diff__body">We are not looking in from the outside. We are on the mats. We move with intention, serve with care, and craft with precision, because we know how gear needs to perform.</p>
+        </div>
+        <div class="pl-diff__item">
+          <p class="pl-diff__title">Built To Sell, Not Just Wear.</p>
+          <p class="pl-diff__body">Presale flyers, launch strategy, drop storytelling, Shopify setup, Klaviyo email flows. We stay behind the scenes so you can shine, and we influence your sell-through rate, not just your production quality.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="pl-rule">
+
+  <!-- ─── PRODUCTS ─── -->
+  <!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  IMAGE OPPORTUNITY #3 — PRODUCT CARD IMAGES (4 total)       ║
+  ║  Best: Clean product shots, one per card                     ║
+  ║  Kimonos: flat lay or worn shot on white/grey bg             ║
+  ║  Rash Guards: on-athlete, no-gi training shot                ║
+  ║  Fight Shorts: detail or worn shot                           ║
+  ║  Apparel: lifestyle, off-mat, hoodie/tee shot                ║
+  ║  Size: 600×400px landscape, consistent across all 4         ║
+  ║  To add: Drop <img> tag at top of each .pl-product__card    ║
+  ║  Add CSS: .pl-product__card img { width:100%; display:block} ║
+  ╚══════════════════════════════════════════════════════════════╝
+  -->
+  <section class="pl-products">
+    <div class="pl-inner">
+      <p class="pl-section__eyebrow">What We Build</p>
+      <h2 class="pl-section__headline pl-display">Everything Your Academy Needs Under One Roof.</h2>
+      <div class="pl-products__grid">
+        <div class="pl-product__card">
+          
+<div class="img-placeholder" style="min-height:160px;">
+  <div class="ph-icon">🖼</div>
+  <p class="ph-label">Image #3a — Kimono Product Shot</p>
+  <p class="ph-desc">Flat lay or worn shot on white/grey background.</p>
+  <p class="ph-size">Recommended: 600×400px landscape</p>
+</div>
+          <p class="pl-product__name">Kimonos</p>
+          <p class="pl-product__desc">Training and competition. IBJJF legal. 380–450 GSM. Custom embroidery, sublimation, woven labels.</p>
+        </div>
+        <div class="pl-product__card">
+          
+<div class="img-placeholder" style="min-height:160px;">
+  <div class="ph-icon">🖼</div>
+  <p class="ph-label">Image #3b — Rash Guard Product Shot</p>
+  <p class="ph-desc">On-athlete, no-gi training shot.</p>
+  <p class="ph-size">Recommended: 600×400px landscape</p>
+</div>
+          <p class="pl-product__name">Rash Guards</p>
+          <p class="pl-product__desc">No-gi and ranked promotion collections. Fully sublimated. Designed to last.</p>
+        </div>
+        <div class="pl-product__card">
+          
+<div class="img-placeholder" style="min-height:160px;">
+  <div class="ph-icon">🖼</div>
+  <p class="ph-label">Image #3c — Fight Shorts Product Shot</p>
+  <p class="ph-desc">Detail or worn shot.</p>
+  <p class="ph-size">Recommended: 600×400px landscape</p>
+</div>
+          <p class="pl-product__name">Fight Shorts</p>
+          <p class="pl-product__desc">No-gi and MMA training. Built for performance, branded for identity.</p>
+        </div>
+        <div class="pl-product__card">
+          
+<div class="img-placeholder" style="min-height:160px;">
+  <div class="ph-icon">🖼</div>
+  <p class="ph-label">Image #3d — Apparel Lifestyle Shot</p>
+  <p class="ph-desc">Off-mat lifestyle shot — hoodie, tee, or beanie.</p>
+  <p class="ph-size">Recommended: 600×400px landscape</p>
+</div>
+          <p class="pl-product__name">Apparel</p>
+          <p class="pl-product__desc">Hoodies, tees, beanies, spats. Core merch and seasonal drops that keep members buying.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="pl-rule">
+
+  <!-- ─── PROCESS ─── -->
+  <!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  IMAGE OPPORTUNITY #4 — PORTFOLIO STRIP (between sections)  ║
+  ║  Best: 3–5 finished product photos in a horizontal row      ║
+  ║  Show real client work: Technics, Marcelo Garcia, etc.       ║
+  ║  Size: ~400×500px portrait each, consistent crop            ║
+  ║  To add: Insert a new <section class="pl-portfolio"> block  ║
+  ║  before this process section — ask Claude to build it       ║
+  ╚══════════════════════════════════════════════════════════════╝
+  -->
+  <section style="padding:60px 0; background:#EAEAEA;">
+  <div style="max-width:1100px;margin:0 auto;padding:0 32px;">
+    <p style="font-family:Jost,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#252A34;margin-bottom:32px;">Our Work</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
+      
+<div class="img-placeholder" style="min-height:260px;">
+  <div class="ph-icon">🖼</div>
+  <p class="ph-label">Image #4a — Portfolio — Client Work</p>
+  <p class="ph-desc">Finished product photo. e.g. Technics Jiu-Jitsu kimono.</p>
+  <p class="ph-size">Recommended: 400×500px portrait</p>
+</div>
+      
+<div class="img-placeholder" style="min-height:260px;">
+  <div class="ph-icon">🖼</div>
+  <p class="ph-label">Image #4b — Portfolio — Client Work</p>
+  <p class="ph-desc">Finished product photo. e.g. Marcelo Garcia rash guard.</p>
+  <p class="ph-size">Recommended: 400×500px portrait</p>
+</div>
+      
+<div class="img-placeholder" style="min-height:260px;">
+  <div class="ph-icon">🖼</div>
+  <p class="ph-label">Image #4c — Portfolio — Client Work</p>
+  <p class="ph-desc">Finished product photo. e.g. Rocky Mountain Women's Grappling.</p>
+  <p class="ph-size">Recommended: 400×500px portrait</p>
+</div>
+    </div>
+  </div>
+</section>
+<section class="pl-process pl-section--dark">
+    <div class="pl-inner">
+      <p class="pl-section__eyebrow">The Process</p>
+      <h2 class="pl-section__headline pl-display">Six Steps. No Surprises.</h2>
+      <div class="pl-process__steps">
+        <div class="pl-process__step">
+          <span class="pl-process__num">01</span>
+          <div>
+            <p class="pl-process__meta">~30 min</p>
+            <p class="pl-process__title">Qualification Call</p>
+            <p class="pl-process__body">We learn your academy, goals, and timeline. If it is a fit, we move fast.</p>
+          </div>
+        </div>
+        <div class="pl-process__step">
+          <span class="pl-process__num">02</span>
+          <div>
+            <p class="pl-process__meta">2–3 weeks</p>
+            <p class="pl-process__title">Design Session</p>
+            <p class="pl-process__body">You send your logo. We build the full tech pack. You approve before anything goes to production.</p>
+          </div>
+        </div>
+        <div class="pl-process__step">
+          <span class="pl-process__num">03</span>
+          <div>
+            <p class="pl-process__meta">Optional</p>
+            <p class="pl-process__title">Pre-Order Campaign</p>
+            <p class="pl-process__body">Run a presale to fund production before you spend a dollar. We help you sell the order before it arrives.</p>
+          </div>
+        </div>
+        <div class="pl-process__step">
+          <span class="pl-process__num">04</span>
+          <div>
+            <p class="pl-process__meta">90–120 days</p>
+            <p class="pl-process__title">Production</p>
+            <p class="pl-process__body">Factory-direct. We track everything. Nothing ships without your sign-off.</p>
+          </div>
+        </div>
+        <div class="pl-process__step">
+          <span class="pl-process__num">05</span>
+          <div>
+            <p class="pl-process__meta">Ongoing</p>
+            <p class="pl-process__title">Launch & Sell-Through</p>
+            <p class="pl-process__body">Shopify, email campaigns, drop strategy. We help you sell out.</p>
+          </div>
+        </div>
+        <div class="pl-process__step">
+          <span class="pl-process__num">06</span>
+          <div>
+            <p class="pl-process__meta">The Goal</p>
+            <p class="pl-process__title">Repeat & Scale</p>
+            <p class="pl-process__body">After 2–3 drops you are running an apparel program, not just placing gear orders.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="pl-rule">
+
+  <!-- ─── MATH ─── -->
+  <!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  IMAGE OPPORTUNITY #5 — STATS SECTION BACKGROUND            ║
+  ║  Best: Wide mat shot, training hall, or gear detail          ║
+  ║  Works as a full-width band image behind the stat cards      ║
+  ║  Size: 1920×600px landscape, dark or desaturated tones      ║
+  ║  To add: background-image on .pl-math with overlay          ║
+  ║  Add: background: rgba(234,234,234,0.92) overlay on top     ║
+  ╚══════════════════════════════════════════════════════════════╝
+  -->
+  <section class="pl-math">
+    <div class="pl-inner">
+      <p class="pl-section__eyebrow">Crafted for Life on and Off the Mats</p>
+      <h2 class="pl-section__headline pl-display">The Numbers Work In Your Favor.</h2>
+      <p class="pl-math__body">
+        Your students are already spending money on gear. The question is whether that money is going to you or to someone else. A private label program turns existing demand into academy revenue, with margins that work and inventory that never truly sits idle. Every kimono on the mat is a billboard. Every drop is a revenue event. Every reorder is proof the program is working.
+      </p>
+      
+<div class="img-placeholder" style="min-height:100px;">
+  <div class="ph-icon">🖼</div>
+  <p class="ph-label">Image #5 — Stats Section Background</p>
+  <p class="ph-desc">Wide mat shot, training hall, or gear detail. Used as background-image behind stat cards with light overlay.</p>
+  <p class="ph-size">Recommended: 1920×600px landscape</p>
+</div>
+      <div class="pl-math__stats">
+        <div class="pl-stat">
+          <p class="pl-stat__num">$0</p>
+          <p class="pl-stat__label">Revenue from gear<br>without a program</p>
+        </div>
+        <div class="pl-stat">
+          <p class="pl-stat__num">72<span style="font-size:40px">%</span></p>
+          <p class="pl-stat__label">ROI on every drop when<br>students are already buying in</p>
+        </div>
+        <div class="pl-stat">
+          <p class="pl-stat__num">100<span style="font-size:40px">%</span></p>
+          <p class="pl-stat__label">Of your students are<br>walking billboards</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="pl-rule">
+
+  <!-- ─── TESTIMONIALS ─── -->
+  <!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  IMAGE SLOTS — TESTIMONIAL CLIENT PHOTOS (4 total)          ║
+  ║  Best: Headshot or action shot of the academy owner/         ║
+  ║  instructor on the mat or in their gym                       ║
+  ║  Size: 800×600px landscape (4:3 ratio), consistent crop      ║
+  ║  To replace: Swap the placeholder div inside                 ║
+  ║  .pl-testimonial__image-wrap with an <img> tag               ║
+  ╚══════════════════════════════════════════════════════════════╝
+  -->
+  <section class="pl-testimonials">
+    <div class="pl-inner">
+      <p class="pl-section__eyebrow">Client Stories</p>
+      <h2 class="pl-section__headline pl-display">Heard Directly From The Mat.</h2>
+      <div class="pl-testimonials__grid">
+
+        <!-- ── TESTIMONIAL 1 ── -->
+        <div class="pl-testimonial">
+          <div class="pl-testimonial__image-wrap">
+            <div class="pl-testimonial__image-placeholder">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" rx="2" fill="#BBBBBB"/>
+                <circle cx="24" cy="18" r="8" fill="#999999"/>
+                <path d="M8 40c0-8.837 7.163-16 16-16s16 7.163 16 16" fill="#999999"/>
+              </svg>
+              <span>Client 1 Photo</span>
+            </div>
+          </div>
+          <div>
+            <span class="pl-testimonial__quote-mark">"</span>
+            <p class="pl-testimonial__body">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit.
+            </p>
+          </div>
+          <div class="pl-testimonial__footer">
+            <p class="pl-testimonial__name">Client 1 Name</p>
+            <p class="pl-testimonial__role">Head Instructor · Academy Name</p>
+          </div>
+        </div>
+
+        <!-- ── TESTIMONIAL 2 ── -->
+        <div class="pl-testimonial">
+          <div class="pl-testimonial__image-wrap">
+            <div class="pl-testimonial__image-placeholder">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" rx="2" fill="#BBBBBB"/>
+                <circle cx="24" cy="18" r="8" fill="#999999"/>
+                <path d="M8 40c0-8.837 7.163-16 16-16s16 7.163 16 16" fill="#999999"/>
+              </svg>
+              <span>Client 2 Photo</span>
+            </div>
+          </div>
+          <div>
+            <span class="pl-testimonial__quote-mark">"</span>
+            <p class="pl-testimonial__body">
+              Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident. Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore cum soluta nobis eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+            </p>
+          </div>
+          <div class="pl-testimonial__footer">
+            <p class="pl-testimonial__name">Client 2 Name</p>
+            <p class="pl-testimonial__role">Academy Owner · Academy Name</p>
+          </div>
+        </div>
+
+        <!-- ── TESTIMONIAL 3 ── -->
+        <div class="pl-testimonial">
+          <div class="pl-testimonial__image-wrap">
+            <div class="pl-testimonial__image-placeholder">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" rx="2" fill="#BBBBBB"/>
+                <circle cx="24" cy="18" r="8" fill="#999999"/>
+                <path d="M8 40c0-8.837 7.163-16 16-16s16 7.163 16 16" fill="#999999"/>
+              </svg>
+              <span>Client 3 Photo</span>
+            </div>
+          </div>
+          <div>
+            <span class="pl-testimonial__quote-mark">"</span>
+            <p class="pl-testimonial__body">
+              Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident deserunt mollit anim id est laborum. Sed ut perspiciatis omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+            </p>
+          </div>
+          <div class="pl-testimonial__footer">
+            <p class="pl-testimonial__name">Client 3 Name</p>
+            <p class="pl-testimonial__role">Head Instructor · Academy Name</p>
+          </div>
+        </div>
+
+        <!-- ── TESTIMONIAL 4 ── -->
+        <div class="pl-testimonial">
+          <div class="pl-testimonial__image-wrap">
+            <div class="pl-testimonial__image-placeholder">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" rx="2" fill="#BBBBBB"/>
+                <circle cx="24" cy="18" r="8" fill="#999999"/>
+                <path d="M8 40c0-8.837 7.163-16 16-16s16 7.163 16 16" fill="#999999"/>
+              </svg>
+              <span>Client 4 Photo</span>
+            </div>
+          </div>
+          <div>
+            <span class="pl-testimonial__quote-mark">"</span>
+            <p class="pl-testimonial__body">
+              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est qui dolorem ipsum quia dolor sit amet consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam quis nostrum exercitationem ullam corporis suscipit laboriosam. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum dolorem eum fugiat quo voluptas nulla pariatur. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.
+            </p>
+          </div>
+          <div class="pl-testimonial__footer">
+            <p class="pl-testimonial__name">Client 4 Name</p>
+            <p class="pl-testimonial__role">Academy Owner · Academy Name</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="pl-rule">
+
+  <!-- ─── CTA / FORM ─── -->
+  <!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  IMAGE OPPORTUNITY #6 — CTA SECTION ABOVE FORM              ║
+  ║  Best: Hero product shot or athlete wearing finished gear    ║
+  ║  Could replace or sit above the "Schedule a Call" button    ║
+  ║  Size: 500×500px square or 500×300px landscape              ║
+  ║  To add: Insert <img> into .pl-cta__left below the sub text ║
+  ╚══════════════════════════════════════════════════════════════╝
+  -->
+  <section class="pl-cta" id="start-your-program">
+    <div class="pl-inner">
+      <div class="pl-cta__layout">
+        <div class="pl-cta__left">
+          <p class="pl-section__eyebrow">Ready to Start</p>
+          <h2 class="pl-section__headline pl-display">Train Hard.<br>Look Good.<br>Let's Build It.</h2>
+          <p class="pl-cta__sub">
+            Two ways to get started. Pick whichever fits how you like to work.
+          </p>
+
+          <div class="pl-cta__option">
+            <p class="pl-cta__option-label">Tell Us About Your Academy</p>
+            <p class="pl-cta__option-desc">Share a few details about your academy and we will take it from there. You will hear from us within 48 hours, and we will work through the right next step together, usually a quick call to talk through your program.</p>
+          </div>
+
+          <div class="pl-cta__divider">
+            <span>or</span>
+          </div>
+
+          <div class="pl-cta__option">
+            <p class="pl-cta__option-label">Talk to a person</p>
+            <p class="pl-cta__option-desc">Book a 30-minute call with Mike. We will walk through your academy, your goals, and whether a private label program makes sense for you. No pitch, no pressure.</p>
+            <a href="https://calendar.app.google/dMXUUszpWEtnZCgT8" target="_blank" rel="noopener" class="pl-btn pl-btn--outline">Schedule a Call</a>
+          </div>
+        </div>
+        <div class="pl-cta__form">
+          <!-- Replace src with your Tally embed URL -->
+          <!-- Option A: iframe embed -->
+          <iframe
+            src="https://tally.so/embed/A78zxl?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            width="100%"
+            height="520"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            title="Start Your Pontis Program"
+            style="background: transparent;"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="pl-footer">
+    <div class="pl-inner">
+      <div class="pl-footer__inner">
+        <img
+          src="/mnt/user-data/uploads/pontis_logo_png-07__2_.png"
+          alt="Pontis"
+          class="pl-footer__logo"
+        >
+        <span class="pl-footer__copy">© 2026 Pontis. Private Label Gear for BJJ Academies. <a href="https://pontis.co" style="color:#9A9895;text-decoration:none;">pontis.co</a></span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
