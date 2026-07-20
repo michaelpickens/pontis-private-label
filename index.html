@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -349,6 +350,16 @@
     color: #999999;
     text-align: center;
     line-height: 1.5;
+  }
+
+  /* ─── SOCIAL PROOF MARQUEE (mobile only) ─── */
+  .pl-proof__marquee-wrap {
+    display: none; /* hidden on desktop */
+  }
+
+  @keyframes pl-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
   }
 
   /* ─── SECTION SHARED ─── */
@@ -825,6 +836,24 @@
     .pl-process__step { grid-template-columns: 56px 1fr; padding: 28px 24px; }
     .pl-cta__form { padding: 32px 24px; }
     .pl-testimonials__grid { grid-template-columns: 1fr; }
+
+    /* Social proof: hide grid, show marquee */
+    .pl-proof__logos { display: none; }
+    .pl-proof__marquee-wrap {
+      display: block;
+      overflow: hidden;
+      width: 100%;
+    }
+    .pl-proof__marquee-track {
+      display: inline-flex;
+      white-space: nowrap;
+      animation: pl-marquee 28s linear infinite;
+    }
+    .pl-proof__marquee-track .pl-proof__logo-item {
+      flex-shrink: 0;
+      width: 140px;
+      padding: 0 20px;
+    }
   }
 
   @media (max-width: 480px) {
@@ -981,8 +1010,27 @@
           <span class="pl-proof__logo-name">Double Black Jiu Jitsu</span>
         </div>
       </div>
+
+      <!-- Mobile marquee (auto-scrolling, all 12 logos duplicated for seamless loop) -->
+      <div class="pl-proof__marquee-wrap" aria-hidden="true">
+        <div class="pl-proof__marquee-track" id="pl-marquee-track"></div>
+      </div>
     </div>
   </section>
+
+  <script>
+    (function () {
+      var grid = document.querySelector('.pl-proof__logos');
+      var track = document.getElementById('pl-marquee-track');
+      if (!grid || !track) return;
+
+      // Clone all logo items from the grid into the marquee track (×2 for seamless loop)
+      var items = grid.querySelectorAll('.pl-proof__logo-item');
+      var html = '';
+      items.forEach(function (el) { html += el.outerHTML; });
+      track.innerHTML = html + html; // duplicate for continuous scroll
+    })();
+  </script>
 
   <hr class="pl-rule">
 
