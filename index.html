@@ -162,6 +162,30 @@
     align-items: center;
   }
 
+  .pl-nav__links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    margin-left: 40px;
+    margin-right: auto;
+  }
+
+  .pl-nav__link {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #252A34;
+    text-decoration: none;
+    opacity: 0.55;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+
+  .pl-nav__link:hover,
+  .pl-nav__link.is-active { opacity: 1; }
+
   .pl-nav .pl-btn {
     padding: 10px 24px;
     font-size: 12px;
@@ -174,8 +198,10 @@
 
   @media (max-width: 768px) {
     .pl-nav {
-      padding: 0 20px;
+      padding: 0 16px;
     }
+    .pl-nav__links { gap: 18px; margin-left: 24px; }
+    .pl-nav__link { font-size: 11px; letter-spacing: 0.08em; }
     .pl-nav .pl-btn--outline {
       display: none;
     }
@@ -887,6 +913,12 @@
     }
   }
 
+  @media (max-width: 600px) {
+    .pl-nav__ctas { display: none; }
+    .pl-nav__links { gap: 14px; margin-left: 16px; }
+    .pl-nav__link { font-size: 10px; letter-spacing: 0.06em; }
+  }
+
   @media (max-width: 480px) {
     .pl-products__grid { grid-template-columns: 1fr; }
     .pl-hero__ctas { flex-direction: column; align-items: center; }
@@ -907,6 +939,13 @@
       alt="Pontis"
       class="pl-nav__logo" style="filter:none;opacity:1;"
     >
+    <div class="pl-nav__links">
+      <!-- When the link-in-bio page becomes the homepage: Home stays index.html, Private Label becomes private-label/ (relative, so it works locally and on github.io too) -->
+      <a href="index.html" class="pl-nav__link is-active">Home</a>
+      <a href="index.html" class="pl-nav__link">Private Label</a>
+      <!-- TEMPORARY: pontis.co is still the Shopify store. Change to https://shop.pontis.co/ at DNS cutover, or this link becomes circular. -->
+      <a href="https://pontis.co/" class="pl-nav__link">Shop</a>
+    </div>
     <div class="pl-nav__ctas">
       <a href="#start-your-program" class="pl-btn pl-btn--primary" onclick="document.getElementById('start-your-program').scrollIntoView({behavior:'smooth'});return false;">Start Your Program</a>
     </div>
