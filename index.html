@@ -601,6 +601,106 @@
     .pl-footer__inner { flex-direction: column; align-items: flex-start; gap: 28px; }
     .pl-footer__links-col { align-items: flex-start; }
   }
+
+  /* ═══════════════ HOMEPAGE SCROLL SECTIONS (below the carousel) ═══════════════ */
+  .hp-section { padding: 96px 0; }
+  .hp-eyebrow {
+    font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase; color: #888; margin-bottom: 18px;
+  }
+  .hp-h2 {
+    font-family: 'Jost', sans-serif; font-weight: 700; letter-spacing: -0.02em;
+    line-height: 1.08; color: #252A34; font-size: clamp(30px, 4.4vw, 50px);
+  }
+  .hp-lead { font-size: clamp(16px,1.4vw,19px); line-height: 1.7; color: #555; max-width: 640px; margin-top: 20px; }
+
+  /* Positioning strip */
+  .hp-intro { background: #FFFFFF; text-align: center; }
+  .hp-intro .hp-eyebrow, .hp-intro .hp-lead { margin-left: auto; margin-right: auto; }
+
+  /* Social proof logos */
+  .hp-proof { background:#FAFAFA; border-top:1px solid #EEE; border-bottom:1px solid #EEE; padding: 56px 0; }
+  .hp-proof__label { text-align:center; font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#999; margin-bottom:34px; }
+  .hp-proof__grid { display:grid; grid-template-columns: repeat(6, 1fr); gap: 32px 24px; align-items:center; }
+  .hp-proof__grid img { width:100%; height:40px; object-fit:contain; filter: grayscale(1); opacity:0.55; transition:opacity .2s, filter .2s; }
+  .hp-proof__grid img:hover { filter:grayscale(0); opacity:1; }
+
+  /* Private label pitch (academies-first) */
+  .hp-pl { background:#FFFFFF; }
+  .hp-pl__grid { display:grid; grid-template-columns: 1.05fr 0.95fr; gap:64px; align-items:center; }
+  .hp-pl__points { list-style:none; margin:28px 0 0; padding:0; display:flex; flex-direction:column; gap:16px; }
+  .hp-pl__points li { position:relative; padding-left:28px; font-size:15px; line-height:1.55; color:#333; }
+  .hp-pl__points li::before { content:''; position:absolute; left:0; top:6px; width:13px; height:13px; border:2px solid #4CC3C7; border-radius:50%; }
+  .hp-pl__points strong { color:#252A34; }
+  .hp-stat { margin-top:28px; padding:22px 26px; background:#EAEAEA; border-left:3px solid #EE3665; }
+  .hp-stat__num { font-family:'Jost',sans-serif; font-weight:700; font-size:38px; line-height:1; color:#252A34; }
+  .hp-stat__label { font-size:12.5px; color:#666; margin-top:8px; line-height:1.5; }
+  .hp-pl__cta { margin-top:32px; }
+  .hp-pl__media { aspect-ratio: 4/5; background:#EAEAEA; overflow:hidden; }
+  .hp-pl__media img { width:100%; height:100%; object-fit:cover; display:block; }
+
+  /* Guarantee / trust strip */
+  .hp-trust { background:#252A34; color:#fff; padding:64px 0; }
+  .hp-trust__grid { display:grid; grid-template-columns: repeat(4,1fr); gap:40px; }
+  .hp-trust__item h3 { font-family:'Jost',sans-serif; font-weight:700; font-size:17px; margin-bottom:10px; letter-spacing:-0.01em; }
+  .hp-trust__item p { font-size:13.5px; line-height:1.6; color:rgba(255,255,255,0.65); }
+
+  /* Shop / Foundation Collection */
+  .hp-shop { background:#FAFAFA; }
+  .hp-shop__head { display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:40px; }
+  .hp-shop__grid { display:grid; grid-template-columns: repeat(3,1fr); gap:20px; }
+  .hp-cat { display:block; text-decoration:none; background:#252A34; color:#fff; aspect-ratio:3/4; position:relative; overflow:hidden; }
+  .hp-cat img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.5; transition:opacity .3s, transform .3s; }
+  .hp-cat:hover img { opacity:.62; transform:scale(1.03); }
+  .hp-cat__label { position:absolute; left:24px; bottom:22px; z-index:2; }
+  .hp-cat__name { font-family:'Jost',sans-serif; font-weight:700; font-size:22px; display:block; }
+  .hp-cat__go { font-size:12px; letter-spacing:.12em; text-transform:uppercase; opacity:.85; margin-top:6px; display:inline-block; }
+
+  /* Testimonials */
+  .hp-tst { background:#fff; text-align:center; }
+  .hp-tst__grid { display:grid; grid-template-columns: repeat(2,1fr); gap:20px; margin-top:44px; text-align:left; }
+  .hp-tst__card { background:#EAEAEA; padding:40px; }
+  .hp-tst__ph { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#EE3665; border:1px solid #EE3665; padding:3px 8px; margin-bottom:18px; }
+  .hp-tst__quote { font-size:16px; line-height:1.75; color:#252A34; font-weight:300; }
+  .hp-tst__who { margin-top:22px; font-family:'Jost',sans-serif; font-weight:700; font-size:15px; color:#252A34; }
+  .hp-tst__role { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#888; margin-top:3px; }
+
+  /* Newsletter */
+  .hp-news { background:#EAEAEA; text-align:center; }
+  .hp-news .hp-eyebrow { margin-left:auto; margin-right:auto; }
+  .hp-news .hp-h2 { font-size:clamp(26px,3.4vw,38px); }
+  .hp-news__form { display:flex; gap:10px; max-width:440px; margin:26px auto 12px; }
+  .hp-news__input { flex:1 1 auto; min-width:0; font-family:'Inter',sans-serif; font-size:15px; padding:13px 16px; border:1px solid #CCC; background:#fff; color:#252A34; }
+  .hp-news__note { font-size:12px; color:#888; }
+
+  /* Expanded footer */
+  .hp-footer { background:#252A34; color:#fff; padding:72px 0 40px; }
+  .hp-footer__top { display:grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap:40px; padding-bottom:44px; border-bottom:1px solid rgba(255,255,255,0.12); }
+  .hp-footer__logo { height:30px; opacity:.9; display:block; }
+  .hp-footer__brandline { font-size:13px; line-height:1.7; color:rgba(255,255,255,0.6); max-width:280px; margin-top:16px; }
+  .hp-footer__col h4 { font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:16px; }
+  .hp-footer__col a { display:block; font-size:14px; color:rgba(255,255,255,0.8); text-decoration:none; margin-bottom:11px; transition:color .2s; }
+  .hp-footer__col a:hover { color:#fff; }
+  .hp-footer__bottom { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; padding-top:26px; }
+  .hp-footer__copy { font-size:12px; color:rgba(255,255,255,0.5); letter-spacing:.03em; }
+  .hp-footer__social { display:flex; gap:20px; }
+  .hp-footer__social a { color:rgba(255,255,255,0.7); text-decoration:none; font-size:13px; transition:color .2s; }
+  .hp-footer__social a:hover { color:#fff; }
+
+  @media (max-width: 860px) {
+    .hp-pl__grid { grid-template-columns:1fr; gap:36px; }
+    .hp-trust__grid { grid-template-columns: repeat(2,1fr); gap:32px; }
+    .hp-shop__grid { grid-template-columns:1fr; }
+    .hp-tst__grid { grid-template-columns:1fr; }
+    .hp-proof__grid { grid-template-columns: repeat(3,1fr); gap:28px 20px; }
+    .hp-footer__top { grid-template-columns: 1fr 1fr; gap:32px; }
+    .hp-news__form { flex-direction:column; }
+  }
+  @media (max-width:480px){
+    .hp-section{ padding:64px 0; }
+    .hp-proof__grid{ grid-template-columns:repeat(2,1fr); }
+    .hp-footer__top{ grid-template-columns:1fr; }
+  }
 </style>
 
 </head>
@@ -788,35 +888,189 @@
     <p class="pc__sr" aria-live="polite" aria-atomic="true"></p>
   </section>
 
-  <!-- ─── FOOTER (matches the private label page) ─── -->
-  <footer class="pl-footer">
+  <!-- ─── POSITIONING STRIP ─── -->
+  <section class="hp-section hp-intro">
     <div class="pl-inner">
-      <div class="pl-footer__inner">
-        <div class="pl-footer__brand-col">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0708/3334/0463/files/pontis_logo_png-07.png?v=1764898237"
-            alt="Pontis"
-            class="pl-footer__logo"
-          >
-          <span class="pl-footer__copy">© 2026 Pontis. Bridging jiu jitsu, artists and athletes through premium training gear.</span>
-        </div>
-        <div class="pl-footer__links-col">
-          <nav class="pl-footer__nav" aria-label="Footer">
-            <a href="index.html">Home</a>
-            <a href="private-label/index.html">Private Label</a>
-            <!-- TEMPORARY: change to https://shop.pontis.co/ at DNS cutover -->
-            <a href="https://pontis.co/">Shop</a>
-          </nav>
-          <div class="pl-footer__contact">
-            <a href="mailto:privatelabel@pontis.co">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-              privatelabel@pontis.co
-            </a>
-            <a href="https://www.instagram.com/pontis.co/" target="_blank" rel="noopener">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-              Instagram
-            </a>
+      <p class="hp-eyebrow">Premium jiu jitsu gear</p>
+      <h2 class="hp-h2">Two ways Pontis shows up on the mat.</h2>
+      <p class="hp-lead">A private label studio that builds custom kimono and apparel programs for academies, factory direct — and our own Foundation Collection, the pieces everything else is built on.</p>
+    </div>
+  </section>
+
+  <!-- ─── SOCIAL PROOF: ACADEMY LOGOS ─── -->
+  <section class="hp-proof">
+    <div class="pl-inner">
+      <p class="hp-proof__label">Trusted by academies building their own gear</p>
+      <div class="hp-proof__grid">
+        <img src="marcelo-garcia-jiu-jitsu.png" alt="Marcelo Garcia Jiu Jitsu">
+        <img src="technics-jiu-jitsu.png" alt="Technics Jiu Jitsu">
+        <img src="vssl-union.png" alt="VSSL Union">
+        <img src="jr-academy.png" alt="JR Academy">
+        <img src="zumi-judo-jiu-jitsu.png" alt="Zumi Judo Jiu Jitsu">
+        <img src="workshop-honolulu.png" alt="Workshop Honolulu">
+        <img src="rocky-mountain-women-s-grappling.png" alt="Rocky Mountain Women's Grappling">
+        <img src="elevate-jiu-jitsu.png" alt="Elevate Jiu Jitsu">
+        <img src="evergreen-jiu-jitsu.png" alt="Evergreen Jiu Jitsu">
+        <img src="rio-jiu-jitsu.png" alt="Rio Jiu Jitsu">
+        <img src="san-diego-judo-jiu-jitsu.png" alt="San Diego Judo Jiu Jitsu">
+        <img src="double-black-jiu-jitsu.png" alt="Double Black Jiu Jitsu">
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PRIVATE LABEL PITCH (academies first) ─── -->
+  <section class="hp-section hp-pl">
+    <div class="pl-inner">
+      <div class="hp-pl__grid">
+        <div>
+          <p class="hp-eyebrow">Private Label · For Academies</p>
+          <h2 class="hp-h2">Your academy deserves gear that sells itself.</h2>
+          <p class="hp-lead">We build custom kimono and apparel programs with you, factory direct — from first sketch through delivery and sell-through. Your brand, your margin.</p>
+          <ul class="hp-pl__points">
+            <li><strong>The Pontis Guarantee</strong> — any defective item replaced, no questions asked.</li>
+            <li><strong>Factory direct</strong> — no marked-up blanks, no middlemen.</li>
+            <li><strong>Built to sell</strong> — designed as a revenue stream, not an expense.</li>
+            <li><strong>Practitioner-led</strong> — made by people who train, for people who train.</li>
+          </ul>
+          <div class="hp-stat">
+            <div class="hp-stat__num">843%</div>
+            <div class="hp-stat__label">sell-through on Technics Jiu-Jitsu's first program run &nbsp;·&nbsp; <em>PLACEHOLDER — verify this figure before launch (flagged in the launch notes as reading like a display error)</em></div>
           </div>
+          <div class="hp-pl__cta">
+            <a href="private-label/index.html" class="pl-btn pl-btn--primary">See the Private Label Program</a>
+          </div>
+        </div>
+        <div class="hp-pl__media">
+          <!-- Real client kimono shot already in the repo -->
+          <img src="technics-jiu-jitsu-kimono-pontis-private-label-client.jpg" alt="Custom kimono Pontis built for a client academy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TRUST / GUARANTEE STRIP ─── -->
+  <section class="hp-trust">
+    <div class="pl-inner">
+      <div class="hp-trust__grid">
+        <div class="hp-trust__item">
+          <h3>The Pontis Guarantee</h3>
+          <p>Any defective item replaced. No questions asked.</p>
+        </div>
+        <div class="hp-trust__item">
+          <h3>Factory Direct</h3>
+          <p>Straight from the makers — no marked-up blanks, no middlemen.</p>
+        </div>
+        <div class="hp-trust__item">
+          <h3>IBJJF-Approved Cuts</h3>
+          <p>Kimonos built to competition spec, ready for the podium.</p>
+        </div>
+        <div class="hp-trust__item">
+          <h3>Practitioner-Led</h3>
+          <p>Designed by people who train, for people who train.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SHOP: FOUNDATION COLLECTION ─── -->
+  <section class="hp-section hp-shop">
+    <div class="pl-inner">
+      <div class="hp-shop__head">
+        <div>
+          <p class="hp-eyebrow">Shop · The Foundation Collection</p>
+          <h2 class="hp-h2">Kimonos, rashguards &amp; shorts.</h2>
+        </div>
+        <a href="https://pontis.co/" target="_blank" rel="noopener" class="pl-btn pl-btn--primary">Shop the Collection</a>
+      </div>
+      <div class="hp-shop__grid">
+        <!-- PLACEHOLDER category images — swap in a real shot per category -->
+        <a class="hp-cat" href="https://pontis.co/" target="_blank" rel="noopener">
+          <img src="pontis-store-hero.jpg" alt="">
+          <span class="hp-cat__label"><span class="hp-cat__name">Kimonos</span><span class="hp-cat__go">Shop →</span></span>
+        </a>
+        <a class="hp-cat" href="https://pontis.co/" target="_blank" rel="noopener">
+          <img src="pontis-store-hero.jpg" alt="">
+          <span class="hp-cat__label"><span class="hp-cat__name">Rashguards</span><span class="hp-cat__go">Shop →</span></span>
+        </a>
+        <a class="hp-cat" href="https://pontis.co/" target="_blank" rel="noopener">
+          <img src="pontis-store-hero.jpg" alt="">
+          <span class="hp-cat__label"><span class="hp-cat__name">Shorts</span><span class="hp-cat__go">Shop →</span></span>
+        </a>
+      </div>
+      <p class="hp-news__note" style="margin-top:16px;">Placeholder category images — each wants its own product shot.</p>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIALS (placeholder — needs real quotes) ─── -->
+  <section class="hp-section hp-tst">
+    <div class="pl-inner">
+      <p class="hp-eyebrow">Client stories</p>
+      <h2 class="hp-h2">Heard directly from the mat.</h2>
+      <div class="hp-tst__grid">
+        <div class="hp-tst__card">
+          <span class="hp-tst__ph">Placeholder — needs real quote</span>
+          <p class="hp-tst__quote">"A real quote from an academy owner goes here — ideally about the program itself: the margin, the sell-through, not chasing factories."</p>
+          <p class="hp-tst__who">Academy Owner</p>
+          <p class="hp-tst__role">Name · Academy</p>
+        </div>
+        <div class="hp-tst__card">
+          <span class="hp-tst__ph">Placeholder — needs real quote</span>
+          <p class="hp-tst__quote">"A second quote goes here. The best ones talk about what changed for the academy after launching their own line with Pontis."</p>
+          <p class="hp-tst__who">Academy Owner</p>
+          <p class="hp-tst__role">Name · Academy</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── NEWSLETTER (placeholder — not wired to Klaviyo) ─── -->
+  <section class="hp-section hp-news">
+    <div class="pl-inner">
+      <p class="hp-eyebrow">Stay in the loop</p>
+      <h2 class="hp-h2">Join the list.</h2>
+      <form class="hp-news__form" onsubmit="return false;" aria-label="Newsletter signup (placeholder)">
+        <input class="hp-news__input" type="email" placeholder="you@example.com" aria-label="Email address">
+        <button type="submit" class="pl-btn pl-btn--primary">Sign Up</button>
+      </form>
+      <p class="hp-news__note">Placeholder — not wired to Klaviyo yet. New drops and restocks, no spam.</p>
+    </div>
+  </section>
+
+  <!-- ─── EXPANDED FOOTER (homepage) ─── -->
+  <footer class="hp-footer">
+    <div class="pl-inner">
+      <div class="hp-footer__top">
+        <div class="hp-footer__brand">
+          <img class="hp-footer__logo" src="https://cdn.shopify.com/s/files/1/0708/3334/0463/files/pontis_logo_png-07.png?v=1764898237" alt="Pontis">
+          <p class="hp-footer__brandline">Bridging jiu jitsu, artists and athletes through premium training gear.</p>
+        </div>
+        <div class="hp-footer__col">
+          <h4>Shop</h4>
+          <a href="https://pontis.co/" target="_blank" rel="noopener">Foundation Collection</a>
+          <a href="https://pontis.co/" target="_blank" rel="noopener">Kimonos</a>
+          <a href="https://pontis.co/" target="_blank" rel="noopener">Rashguards</a>
+          <a href="https://pontis.co/" target="_blank" rel="noopener">Shorts</a>
+        </div>
+        <div class="hp-footer__col">
+          <h4>Private Label</h4>
+          <a href="private-label/index.html">The Program</a>
+          <a href="private-label/index.html">How It Works</a>
+          <a href="mailto:privatelabel@pontis.co">Contact</a>
+        </div>
+        <div class="hp-footer__col">
+          <h4>Company &amp; Legal</h4>
+          <!-- PLACEHOLDER links — pages don't exist yet -->
+          <a href="#">About</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Shipping &amp; Returns</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+      <div class="hp-footer__bottom">
+        <span class="hp-footer__copy">© 2026 Pontis. Bridging jiu jitsu, artists and athletes through premium training gear.</span>
+        <div class="hp-footer__social">
+          <a href="mailto:privatelabel@pontis.co">privatelabel@pontis.co</a>
+          <a href="https://www.instagram.com/pontis.co/" target="_blank" rel="noopener">Instagram</a>
         </div>
       </div>
     </div>
