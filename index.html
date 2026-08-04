@@ -240,6 +240,7 @@
   /* ─── INLINE SIGN-UP (slide 2) ─── */
   .pc__form {
     display: flex;
+    flex-direction: column;
     gap: 10px;
     max-width: 460px;
     margin-bottom: 14px;
@@ -276,6 +277,14 @@
   }
   .pc__formnote.is-ok   { color: #4CC3C7; }
   .pc__formnote.is-err  { color: #EE3665; }
+
+  .pc__consent {
+    font-size: 11px;
+    line-height: 1.5;
+    max-width: 460px;
+    margin-top: 8px;
+    color: rgba(255,255,255,0.5);
+  }
 
   @media (max-width: 560px) {
     .pc__form { flex-direction: column; gap: 10px; }
@@ -613,10 +622,7 @@
       <a href="index.html" class="pl-nav__link is-active" aria-current="page">Home</a>
       <a href="private-label/index.html" class="pl-nav__link">Private Label</a>
       <!-- TEMPORARY: pontis.co is still the Shopify store. Change to https://shop.pontis.co/ at DNS cutover, or this link becomes circular. -->
-      <a href="https://pontis.co/" class="pl-nav__link">Shop</a>
-    </div>
-    <div class="pl-nav__ctas">
-      <a href="private-label/index.html#start-your-program" class="pl-btn pl-btn--primary">Start Your Program</a>
+      <a href="https://pontis.co/" class="pl-nav__link" target="_blank" rel="noopener">Shop</a>
     </div>
   </nav>
 
@@ -654,7 +660,6 @@
             <p class="pc__body">Custom kimono and apparel programs built with you, factory direct, from first sketch through delivery and sell&#8209;through.</p>
             <div class="pc__actions">
               <a href="private-label/index.html" class="pl-btn pl-btn--onDark">See the Program</a>
-              <a href="private-label/index.html#start-your-program" class="pl-btn pl-btn--ghostDark">Start Your Program</a>
             </div>
           </div>
         </div>
@@ -697,11 +702,10 @@
               <span class="pc__tag">September</span>
             </p>
             <h2 class="pl-display pc__title">
-              <span>Something Is</span>
-              <span>Happening in</span>
-              <span>September.</span>
+              <span>September 20th</span>
+              <span>Won&rsquo;t Be Quiet.</span>
             </h2>
-            <p class="pc__body">A collaboration a long time in the making. Leave your email and you&rsquo;ll know before anyone else.</p>
+            <p class="pc__body">Worlds are coming together, a long time in the making. Drop your email or number and you&rsquo;ll see it before anyone else.</p>
 
             <form class="pc__form" id="drop-form" novalidate>
               <label class="pc__sr" for="drop-email">Email address</label>
@@ -715,9 +719,20 @@
                 placeholder="you@example.com"
                 required
               >
+              <label class="pc__sr" for="drop-phone">Mobile number for text updates (optional)</label>
+              <input
+                class="pc__input"
+                id="drop-phone"
+                type="tel"
+                name="phone"
+                inputmode="tel"
+                autocomplete="tel"
+                placeholder="Mobile number for texts (optional)"
+              >
               <button type="submit" class="pl-btn pl-btn--onDark">Notify Me</button>
             </form>
-            <p class="pc__formnote" id="drop-note" role="status" aria-live="polite">One email when it drops. Nothing else.</p>
+            <p class="pc__formnote" id="drop-note" role="status" aria-live="polite">One message when it drops. Nothing else.</p>
+            <p class="pc__consent">Add your number to also get a text. By doing so you agree to receive SMS from Pontis about this drop; msg &amp; data rates may apply, reply STOP to opt out.</p>
           </div>
         </div>
       </div>
@@ -961,6 +976,7 @@
   if (!form) return;
 
   var input  = document.getElementById('drop-email');
+  var phone  = document.getElementById('drop-phone');
   var button = form.querySelector('button');
   var DEFAULT_NOTE = note.textContent;
 
@@ -970,10 +986,30 @@
     if (kind) note.classList.add(kind);
   }
 
-  input.addEventListener('input', function () {
+  function clearError() {
     input.removeAttribute('aria-invalid');
+    phone.removeAttribute('aria-invalid');
     if (note.classList.contains('is-err')) say(DEFAULT_NOTE, null);
-  });
+  }
+  input.addEventListener('input', clearError);
+  phone.addEventListener('input', clearError);
+
+  // Loose E.164 normaliser for the OPTIONAL phone field. Assumes US numbers
+  // when no country code is given — adjust if you take international sign-ups.
+  // Returns: null = left blank (email only), '' = typed but unparseable,
+  // otherwise the +E.164 string.
+  function toE164(raw) {
+    var p = (raw || '').trim();
+    if (!p) return null;
+    if (p.charAt(0) === '+') {
+      var kept = '+' + p.slice(1).replace(/\D/g, '');
+      return kept.length >= 9 ? kept : '';
+    }
+    var digits = p.replace(/\D/g, '');
+    if (digits.length === 10) return '+1' + digits;
+    if (digits.length === 11 && digits.charAt(0) === '1') return '+' + digits;
+    return '';
+  }
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -988,6 +1024,15 @@
       return;
     }
 
+    // Phone is optional. null = blank (fine), '' = typed but couldn't be parsed.
+    var phoneE164 = toE164(phone.value);
+    if (phoneE164 === '') {
+      phone.setAttribute('aria-invalid', 'true');
+      say('That number doesn’t look right — or leave it blank for email only.', 'is-err');
+      phone.focus();
+      return;
+    }
+
     if (KLAVIYO_LIST_ID === 'REPLACE_ME') {
       say('Sign-up isn’t wired up yet — the Klaviyo list ID is still a placeholder.', 'is-err');
       return;
@@ -996,6 +1041,16 @@
     button.disabled = true;
     say('Adding you…', null);
 
+    // Email subscribes via the list's opt-in settings. If a number was given we
+    // also opt them into SMS. BEFORE GO-LIVE: confirm SMS is enabled on the
+    // Klaviyo account, the list has SMS consent configured, and the consent
+    // line under the form satisfies TCPA for your region.
+    var profileAttributes = { email: email };
+    if (phoneE164) {
+      profileAttributes.phone_number = phoneE164;
+      profileAttributes.subscriptions = { sms: { marketing: { consent: 'SUBSCRIBED' } } };
+    }
+
     fetch('https://a.klaviyo.com/client/subscriptions/?company_id=' + KLAVIYO_COMPANY_ID, {
       method: 'POST',
       headers: { 'content-type': 'application/json', 'revision': '2024-10-15' },
@@ -1003,7 +1058,7 @@
         data: {
           type: 'subscription',
           attributes: {
-            profile: { data: { type: 'profile', attributes: { email: email } } }
+            profile: { data: { type: 'profile', attributes: profileAttributes } }
           },
           relationships: { list: { data: { type: 'list', id: KLAVIYO_LIST_ID } } }
         }
