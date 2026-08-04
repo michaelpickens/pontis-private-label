@@ -649,12 +649,14 @@
   .hp-shop { background:#FAFAFA; }
   .hp-shop__head { display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:40px; }
   .hp-shop__grid { display:grid; grid-template-columns: repeat(3,1fr); gap:20px; }
-  .hp-cat { display:block; text-decoration:none; background:#252A34; color:#fff; aspect-ratio:3/4; position:relative; overflow:hidden; }
-  .hp-cat img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.5; transition:opacity .3s, transform .3s; }
-  .hp-cat:hover img { opacity:.62; transform:scale(1.03); }
-  .hp-cat__label { position:absolute; left:24px; bottom:22px; z-index:2; }
-  .hp-cat__name { font-family:'Jost',sans-serif; font-weight:700; font-size:22px; display:block; }
-  .hp-cat__go { font-size:12px; letter-spacing:.12em; text-transform:uppercase; opacity:.85; margin-top:6px; display:inline-block; }
+  .hp-cat { display:flex; flex-direction:column; text-decoration:none; background:#FFFFFF; border:1px solid #E4E4E4; overflow:hidden; transition:border-color .2s, box-shadow .2s; }
+  .hp-cat:hover { border-color:#CFCFCF; box-shadow:0 6px 22px rgba(37,42,52,0.07); }
+  .hp-cat:hover .hp-cat__imgwrap img { transform:scale(1.03); }
+  .hp-cat__imgwrap { display:flex; align-items:center; justify-content:center; aspect-ratio:1/1; padding:22px; }
+  .hp-cat__imgwrap img { max-width:100%; max-height:100%; object-fit:contain; display:block; transition:transform .3s; }
+  .hp-cat__label { padding:0 24px 26px; }
+  .hp-cat__name { font-family:'Jost',sans-serif; font-weight:700; font-size:20px; color:#252A34; display:block; }
+  .hp-cat__go { font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#888; margin-top:6px; display:inline-block; }
 
   /* Testimonials */
   .hp-tst { background:#fff; text-align:center; }
@@ -980,24 +982,24 @@
           <p class="hp-eyebrow">Shop · The Foundation Collection</p>
           <h2 class="hp-h2">Kimonos, rashguards &amp; shorts.</h2>
         </div>
-        <a href="https://pontis.co/" target="_blank" rel="noopener" class="pl-btn pl-btn--primary">Shop the Collection</a>
+        <!-- TEMPORARY: pontis.co is the store today; change to shop.pontis.co at DNS cutover -->
+        <a href="https://pontis.co/collections/foundation" target="_blank" rel="noopener" class="pl-btn pl-btn--primary">Shop the Collection</a>
       </div>
       <div class="hp-shop__grid">
-        <!-- PLACEHOLDER category images — swap in a real shot per category -->
-        <a class="hp-cat" href="https://pontis.co/" target="_blank" rel="noopener">
-          <img src="pontis-store-hero.jpg" alt="">
+        <!-- Category cards link to the single product in each Foundation category. Images hosted on Shopify CDN. TEMPORARY store links — change to shop.pontis.co at DNS cutover. -->
+        <a class="hp-cat" href="https://pontis.co/products/pontis-foundation-kimono" target="_blank" rel="noopener">
+          <span class="hp-cat__imgwrap"><img src="pontis-foundation-kimono.webp" alt="Pontis Foundation Kimono"></span>
           <span class="hp-cat__label"><span class="hp-cat__name">Kimonos</span><span class="hp-cat__go">Shop →</span></span>
         </a>
-        <a class="hp-cat" href="https://pontis.co/" target="_blank" rel="noopener">
-          <img src="pontis-store-hero.jpg" alt="">
+        <a class="hp-cat" href="https://pontis.co/products/foundation-short-sleeve-rashguard" target="_blank" rel="noopener">
+          <span class="hp-cat__imgwrap"><img src="https://cdn.shopify.com/s/files/1/0708/3334/0463/files/ChatGPTImageMay8_2026_11_07_37AM_1.png?v=1778256596" alt="Pontis Foundation short sleeve rashguard"></span>
           <span class="hp-cat__label"><span class="hp-cat__name">Rashguards</span><span class="hp-cat__go">Shop →</span></span>
         </a>
-        <a class="hp-cat" href="https://pontis.co/" target="_blank" rel="noopener">
-          <img src="pontis-store-hero.jpg" alt="">
+        <a class="hp-cat" href="https://pontis.co/products/foundation-no-gi-shorts-by-pontis" target="_blank" rel="noopener">
+          <span class="hp-cat__imgwrap"><img src="https://cdn.shopify.com/s/files/1/0708/3334/0463/files/ChatGPTImageMay8_2026_11_19_14AM.png?v=1778257205" alt="Pontis Foundation no-gi training shorts"></span>
           <span class="hp-cat__label"><span class="hp-cat__name">Shorts</span><span class="hp-cat__go">Shop →</span></span>
         </a>
       </div>
-      <p class="hp-news__note" style="margin-top:16px;">Placeholder category images — each wants its own product shot.</p>
     </div>
   </section>
 
