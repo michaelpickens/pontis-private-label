@@ -503,6 +503,95 @@
     .pc__slide.is-active { transition: none; }
     .pc__dot, .pc__arrow, .pl-btn, .pl-nav__link { transition: none; }
   }
+
+  /* ─── FOOTER (matches the private label page) ─── */
+  .pl-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .pl-footer {
+    padding: 48px 0;
+    border-top: 1px solid #DDDDDD;
+  }
+
+  .pl-footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .pl-footer__brand-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .pl-footer__links-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+  }
+
+  .pl-footer__logo {
+    height: 28px;
+    width: auto;
+    filter: none;
+    opacity: 0.5;
+  }
+
+  .pl-footer__copy {
+    font-size: 12px;
+    color: #888888;
+    letter-spacing: 0.05em;
+  }
+
+  .pl-footer__nav,
+  .pl-footer__contact {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .pl-footer__nav a {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #252A34;
+    text-decoration: none;
+    opacity: 0.55;
+    transition: opacity 0.2s;
+  }
+
+  .pl-footer__contact a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #888888;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .pl-footer__nav a:hover { opacity: 1; }
+  .pl-footer__contact a:hover { color: #252A34; }
+  .pl-footer__contact svg { flex: 0 0 auto; }
+
+  @media (max-width: 768px) {
+    .pl-inner { padding: 0 20px; }
+    .pl-footer__inner { flex-direction: column; align-items: flex-start; gap: 28px; }
+    .pl-footer__links-col { align-items: flex-start; }
+  }
 </style>
 
 </head>
@@ -683,6 +772,40 @@
 
     <p class="pc__sr" aria-live="polite" aria-atomic="true"></p>
   </section>
+
+  <!-- ─── FOOTER (matches the private label page) ─── -->
+  <footer class="pl-footer">
+    <div class="pl-inner">
+      <div class="pl-footer__inner">
+        <div class="pl-footer__brand-col">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0708/3334/0463/files/pontis_logo_png-07.png?v=1764898237"
+            alt="Pontis"
+            class="pl-footer__logo"
+          >
+          <span class="pl-footer__copy">© 2026 Pontis. Private Label Studio for Jiu Jitsu Academies.</span>
+        </div>
+        <div class="pl-footer__links-col">
+          <nav class="pl-footer__nav" aria-label="Footer">
+            <a href="index.html">Home</a>
+            <a href="private-label/index.html">Private Label</a>
+            <!-- TEMPORARY: change to https://shop.pontis.co/ at DNS cutover -->
+            <a href="https://pontis.co/">Shop</a>
+          </nav>
+          <div class="pl-footer__contact">
+            <a href="mailto:privatelabel@pontis.co">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+              privatelabel@pontis.co
+            </a>
+            <a href="https://www.instagram.com/pontis.co/" target="_blank" rel="noopener">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </div><!-- /.pl-page -->
 
