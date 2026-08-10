@@ -628,6 +628,26 @@
   .hp-proof__grid img { width:100%; height:40px; object-fit:contain; filter: grayscale(1); opacity:0.55; transition:opacity .2s, filter .2s; }
   .hp-proof__grid img:hover { filter:grayscale(0); opacity:1; }
 
+  /* Mobile marquee (mirrors the private-label page): hide the grid, auto-scroll the logos */
+  .hp-proof__marquee-wrap { display: none; }
+  @keyframes hp-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (max-width: 768px) {
+    .hp-proof__grid { display: none; }
+    .hp-proof__marquee-wrap { display: block; overflow: hidden; width: 100%; }
+    .hp-proof__marquee-track {
+      display: inline-flex; align-items: center; white-space: nowrap;
+      animation: hp-marquee 28s linear infinite;
+    }
+    .hp-proof__marquee-track img {
+      flex: 0 0 auto; height: 34px; width: auto; max-width: 130px;
+      object-fit: contain; margin: 0 22px; filter: grayscale(1); opacity: 0.55;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hp-proof__marquee-wrap { overflow-x: auto; }
+    .hp-proof__marquee-track { animation: none; }
+  }
+
   /* Private label pitch (academies-first) */
   .hp-pl { background:#FFFFFF; }
   .hp-pl__grid { display:grid; grid-template-columns: 1.05fr 0.95fr; gap:64px; align-items:center; }
@@ -924,8 +944,25 @@
         <img src="san-diego-judo-jiu-jitsu.png" alt="San Diego Judo Jiu Jitsu">
         <img src="double-black-jiu-jitsu.png" alt="Double Black Jiu Jitsu">
       </div>
+
+      <!-- Mobile-only auto-scrolling marquee; logos cloned from the grid above (×2 for a seamless loop) -->
+      <div class="hp-proof__marquee-wrap" aria-hidden="true">
+        <div class="hp-proof__marquee-track" id="hp-marquee-track"></div>
+      </div>
     </div>
   </section>
+
+  <script>
+    (function () {
+      var grid = document.querySelector('.hp-proof__grid');
+      var track = document.getElementById('hp-marquee-track');
+      if (!grid || !track) return;
+      var imgs = grid.querySelectorAll('img');
+      var html = '';
+      imgs.forEach(function (el) { html += el.outerHTML; });
+      track.innerHTML = html + html; // duplicate for continuous scroll
+    })();
+  </script>
 
   <!-- ─── PRIVATE LABEL PITCH (academies first) ─── -->
   <section class="hp-section hp-pl">
