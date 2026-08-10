@@ -570,6 +570,17 @@
     border-color: #252A34;
   }
 
+  /* Uniform image frame so all 4 cards match height regardless of source
+     aspect (portrait photos vs near-square product renders). */
+  .pl-product__card img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin-bottom: 22px;
+  }
+
   .pl-product__name {
     font-family: 'Jost', sans-serif;
     font-size: 22px;
