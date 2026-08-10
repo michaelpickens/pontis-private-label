@@ -1069,18 +1069,80 @@
     </div>
   </section>
 
-  <!-- ─── NEWSLETTER (placeholder — not wired to Klaviyo) ─── -->
+  <!-- ─── NEWSLETTER → Klaviyo "Email List" (RZY6Q2, general) ─── -->
   <section class="hp-section hp-news">
     <div class="pl-inner">
       <p class="hp-eyebrow">Stay in the loop</p>
       <h2 class="hp-h2">Join the list.</h2>
-      <form class="hp-news__form" onsubmit="return false;" aria-label="Newsletter signup (placeholder)">
-        <input class="hp-news__input" type="email" placeholder="you@example.com" aria-label="Email address">
+      <form class="hp-news__form" id="news-form" novalidate aria-label="Newsletter signup">
+        <input class="hp-news__input" id="news-email" type="email" name="email" inputmode="email" autocomplete="email" placeholder="you@example.com" aria-label="Email address" required>
         <button type="submit" class="pl-btn pl-btn--primary">Sign Up</button>
       </form>
-      <p class="hp-news__note">Placeholder — not wired to Klaviyo yet. New drops and restocks, no spam.</p>
+      <p class="hp-news__note" id="news-note" role="status" aria-live="polite">New drops and restocks, no spam.</p>
     </div>
   </section>
+
+  <script>
+  // ── HOMEPAGE NEWSLETTER → KLAVIYO ──────────────────────────────────────
+  // Same client-side subscription endpoint as the slide-2 form (static-site
+  // safe; company_id is the PUBLIC key, meant to be in source). Email only —
+  // feeds the general "Email List" (single opt-in, so subscribed on submit).
+  (function () {
+    var KLAVIYO_COMPANY_ID = 'Vh9kxd';   // Pontis public API key
+    var NEWSLETTER_LIST_ID = 'RZY6Q2';   // "Email List" (general). Swap to split this out.
+
+    var form = document.getElementById('news-form');
+    if (!form) return;
+    var input  = document.getElementById('news-email');
+    var note   = document.getElementById('news-note');
+    var button = form.querySelector('button');
+    var DEFAULT_NOTE = note.textContent;
+
+    function say(msg, kind) {
+      note.textContent = msg;
+      note.style.color = kind === 'ok' ? '#2f7d4f' : (kind === 'err' ? '#c0392b' : '');
+    }
+    input.addEventListener('input', function () {
+      input.removeAttribute('aria-invalid');
+      if (note.textContent !== DEFAULT_NOTE) say(DEFAULT_NOTE, null);
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = (input.value || '').trim();
+      // Loose check — the server is the real validator; this catches typos.
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        input.setAttribute('aria-invalid', 'true');
+        say('That email doesn’t look right — mind checking it?', 'err');
+        input.focus();
+        return;
+      }
+      button.disabled = true;
+      say('Adding you…', null);
+
+      fetch('https://a.klaviyo.com/client/subscriptions/?company_id=' + KLAVIYO_COMPANY_ID, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'revision': '2024-10-15' },
+        body: JSON.stringify({
+          data: {
+            type: 'subscription',
+            attributes: { profile: { data: { type: 'profile', attributes: { email: email } } } },
+            relationships: { list: { data: { type: 'list', id: NEWSLETTER_LIST_ID } } }
+          }
+        })
+      })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        form.style.display = 'none';
+        say('You’re on the list — thanks for joining.', 'ok');
+      })
+      .catch(function () {
+        button.disabled = false;
+        say('Something went wrong. Try again, or email privatelabel@pontis.co.', 'err');
+      });
+    });
+  })();
+  </script>
 
   <!-- ─── EXPANDED FOOTER (homepage) ─── -->
   <footer class="hp-footer">
