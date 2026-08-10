@@ -231,6 +231,8 @@
     filter: none;
     opacity: 0.5;
   }
+
+  .pl-hero__eyebrow {
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.2em;
@@ -259,6 +261,49 @@
     gap: 16px;
     justify-content: center;
     flex-wrap: wrap;
+  }
+
+  /* ─── SPLIT HERO (portrait photo right, copy left) ─── */
+  .pl-hero--split {
+    text-align: left;
+    padding-top: 140px;
+    padding-bottom: 84px;
+  }
+  .pl-hero--split .pl-hero__grid {
+    display: grid;
+    grid-template-columns: 1.02fr 0.98fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .pl-hero--split .pl-hero__eyebrow { margin-bottom: 22px; }
+  .pl-hero--split .pl-hero__headline {
+    font-size: clamp(40px, 5.4vw, 76px);
+    max-width: none;
+    margin: 0 0 24px;
+  }
+  .pl-hero--split .pl-hero__sub {
+    max-width: 520px;
+    margin: 0 0 40px;
+  }
+  .pl-hero--split .pl-hero__ctas { justify-content: flex-start; }
+  .pl-hero__media {
+    position: relative;
+    overflow: hidden;
+    background: #EAEAEA;
+    border-radius: 2px;
+    aspect-ratio: 4 / 5;
+  }
+  .pl-hero__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 55%;
+    display: block;
+  }
+  @media (max-width: 768px) {
+    .pl-hero--split { padding-top: 120px; padding-bottom: 64px; }
+    .pl-hero--split .pl-hero__grid { grid-template-columns: 1fr; gap: 32px; }
+    .pl-hero__media { aspect-ratio: 4 / 5; max-height: 460px; margin: 0 auto; width: 100%; }
   }
 
   /* ─── BUTTONS ─── */
@@ -1004,34 +1049,28 @@
     </div>
   </nav>
 
-  <!-- ─── HERO ─── -->
-  <!--
-  ╔══════════════════════════════════════════════════════════════╗
-  ║  IMAGE OPPORTUNITY #1 — HERO BACKGROUND                     ║
-  ║  Best: Full-width action shot, dark/dramatic lighting        ║
-  ║  (athlete on mat, kimono detail, training in gym)            ║
-  ║  Size: 1920×1080px minimum, landscape                        ║
-  ║  To add: Set as CSS background-image on .pl-hero             ║
-  ║  Add overlay: background: rgba(255,255,255,0.85) on top      ║
-  ║  so text stays readable on light theme                       ║
-  ╚══════════════════════════════════════════════════════════════╝
-  -->
-  <section class="pl-hero" style="background-image: url('https://cdn.shopify.com/s/files/1/0708/3334/0463/files/8U3A9116.jpg?v=1778986633'); background-size: cover; background-position: center top; position: relative;">
-  <div style="position:absolute;inset:0;background:rgba(255,255,255,0.65);"></div>
-  <div style="position:relative;z-index:1;">
-    
-
+  <!-- ─── HERO (split: copy left, portrait photo right) ───
+       Portrait hero plate lives at repo root: marcelo-garcia-shorts-pontis-private-label-hero.jpg
+       Swap the <img src> to change it; object-position in CSS reframes the crop. -->
+  <section class="pl-hero pl-hero--split">
     <div class="pl-inner">
-      <p class="pl-hero__eyebrow">Premium Private Label Studio</p>
-      <h1 class="pl-hero__headline pl-display">
-        Your Academy Deserves<br>
-        Gear That Sells Itself.
-      </h1>
-      <p class="pl-hero__sub">
-        Pontis builds custom kimono and apparel programs for jiu jitsu academies. Your vision. Your brand. Factory direct.
-      </p>
-      <div class="pl-hero__ctas">
-        <a href="#start-your-program" class="pl-btn pl-btn--primary">Start Your Program</a>
+      <div class="pl-hero__grid">
+        <div class="pl-hero__col-text">
+          <p class="pl-hero__eyebrow">Premium Private Label Studio</p>
+          <h1 class="pl-hero__headline pl-display">
+            Your Academy Deserves<br>
+            Gear That Sells Itself.
+          </h1>
+          <p class="pl-hero__sub">
+            Pontis builds custom kimono and apparel programs for jiu jitsu academies. Your vision. Your brand. Factory direct.
+          </p>
+          <div class="pl-hero__ctas">
+            <a href="#start-your-program" class="pl-btn pl-btn--primary">Start Your Program</a>
+          </div>
+        </div>
+        <div class="pl-hero__media">
+          <img src="../marcelo-garcia-shorts-pontis-private-label-hero.jpg" alt="Custom Marcelo Garcia Jiu-Jitsu fight shorts built by Pontis Private Label" width="800" height="1200">
+        </div>
       </div>
       <script>
         document.querySelector('.pl-hero__ctas .pl-btn--primary').addEventListener('click', function(e) {
@@ -1040,7 +1079,6 @@
         });
       </script>
     </div>
-  </div>
   </section>
 
   <!-- ─── SOCIAL PROOF ─── -->
@@ -1220,7 +1258,7 @@
       <div class="pl-products__grid">
         <div class="pl-product__card">
           
-<img src="https://cdn.shopify.com/s/files/1/0708/3334/0463/files/WhatsApp_Image_2026-04-08_at_11.33.18.jpg?v=1777539905" alt="Custom Kimono — Pontis Private Label" style="width:100%;display:block;">
+<img loading="lazy" decoding="async" src="../meme-jitsu-kimono-pontis-private-label.jpg" alt="Custom Meme Jitsu white kimono built by Pontis Private Label" style="width:100%;display:block;">
           <p class="pl-product__name">Kimonos</p>
           <p class="pl-product__desc">Training and competition ready. IBJJF legal. 380–650 GSM. Custom embroidery, direct-to-fabric printing, and woven labels. Built to represent your academy on and off the mat.</p>
         </div>
@@ -1238,7 +1276,7 @@
         </div>
         <div class="pl-product__card">
           
-<img loading="lazy" decoding="async" src="../custom-apparel-pontis-private-label.jpg" alt="Custom Apparel — Pontis Private Label" style="width:100%;display:block;">
+<img loading="lazy" decoding="async" src="../double-black-apparel-pontis-private-label.jpg" alt="Custom Double Black apparel tee built by Pontis Private Label" style="width:100%;display:block;">
           <p class="pl-product__name">Apparel</p>
           <p class="pl-product__desc">Hoodies, tees, and hats. Not the standard blanks. Fashion-forward cuts and trending styles your members will wear outside the gym, not just on the mats. Core merch and seasonal drops that keep your academy top of mind.</p>
         </div>
@@ -1264,15 +1302,15 @@
     <p style="font-family:Jost,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#252A34;margin-bottom:32px;">Our Work</p>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
       
-<img loading="lazy" decoding="async" src="../technics-jiu-jitsu-kimono-pontis-private-label-client.jpg" alt="Technics Jiu-Jitsu Kimono — Pontis Private Label client" style="width:100%;height:100%;object-fit:cover;display:block;min-height:260px;">
+<img loading="lazy" decoding="async" src="../marcelo-garcia-jiu-jitsu-pontis-private-label-client.jpg" alt="Marcelo Garcia Jiu-Jitsu custom competition gear — Pontis Private Label client" style="width:100%;height:100%;object-fit:cover;display:block;min-height:260px;">
       
 <img loading="lazy" decoding="async"
-  src="../workshop-honolulu-athlete-competing-at-ibjjf-pontis-private-.jpg"
-  alt="Workshop Honolulu athlete competing at IBJJF — Pontis Private Label client"
+  src="../meme-jitsu-kimono-hanging-pontis-private-label-client.jpg"
+  alt="Custom Meme Jitsu kimono detail — Pontis Private Label client"
   style="width:100%;height:100%;object-fit:cover;display:block;min-height:260px;"
 >
       
-<img src="https://cdn.shopify.com/s/files/1/0708/3334/0463/files/WhatsAppImage2025-10-07at13.04.46_5.jpg?v=1759893773" alt="Client work — Pontis Private Label" style="width:100%;height:100%;object-fit:cover;display:block;min-height:260px;">
+<img loading="lazy" decoding="async" src="../workshop-honolulu-ibjjf-pontis-private-label-client.jpg" alt="Workshop Honolulu athlete competing at IBJJF in custom Pontis gear — Private Label client" style="width:100%;height:100%;object-fit:cover;display:block;min-height:260px;">
     </div>
   </div>
 </section>
@@ -1392,7 +1430,7 @@
         <div class="pl-testimonial">
           <div class="pl-testimonial__image-wrap">
             <div class="pl-testimonial__image-placeholder">
-<img src="https://cdn.shopify.com/s/files/1/0708/3334/0463/files/03b609a3-a5c1-465b-8068-0be401dc329f_1.jpg?v=1759198655" alt="Client 1 Photo" style="width:100%;height:100%;object-fit:cover;display:block;">
+<img loading="lazy" decoding="async" src="../marcelo-garcia-pontis-private-label-testimonial.jpg" alt="Marcelo Garcia in a custom Pontis rashguard and shorts" style="width:100%;height:100%;object-fit:cover;display:block;">
             </div>
           </div>
           <div>
