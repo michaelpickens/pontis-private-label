@@ -451,7 +451,10 @@
   }
 
   @media (max-width: 700px) {
-    .pl-nav__links { display: none; }
+    /* Keep the nav links visible on mobile (matches the private-label page).
+       No CTA button in this nav, so the three links fit fine when scaled down. */
+    .pl-nav__links { display: flex; margin-left: 18px; gap: 15px; }
+    .pl-nav__link { font-size: 11px; letter-spacing: 0.06em; }
     .pc__inner { padding: 0 24px; }
     /* Content is bottom-anchored on phones, so the scrim weights to the bottom.
        Held high (0.93) up to 42% because the eyebrow and headline sit right
@@ -702,6 +705,10 @@
     .hp-section{ padding:64px 0; }
     .hp-proof__grid{ grid-template-columns:repeat(2,1fr); }
     .hp-footer__top{ grid-template-columns:1fr; }
+    /* Tighten the nav links so all three clear the logo on the narrowest phones */
+    .pl-nav { padding: 0 12px; }
+    .pl-nav__links { margin-left: 10px; gap: 11px; }
+    .pl-nav__link { font-size: 10px; letter-spacing: 0.03em; white-space: nowrap; }
   }
 </style>
 
